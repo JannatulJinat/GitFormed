@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RepositoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,9 @@ Route::get('/profile', function () {
     return view('profile');
 })->name('profile')->middleware('auth');
 
-require __DIR__.'/auth.php';
+Route::middleware('auth')->group(function () {
+    Route::get('/create-repository', [RepositoryController::class, 'create'])->name('create-repository');
+    Route::post('/create-repository', [RepositoryController::class, 'store']);
+});
+
+require __DIR__ . '/auth.php';
