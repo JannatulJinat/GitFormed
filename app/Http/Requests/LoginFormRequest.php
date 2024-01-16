@@ -26,7 +26,7 @@ class LoginFormRequest extends FormRequest
             'password' => 'required',
         ];
     }
-    
+
     public function messages(): array
     {
         return [

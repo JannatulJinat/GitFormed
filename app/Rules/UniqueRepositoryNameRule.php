@@ -2,8 +2,8 @@
 
 namespace App\Rules;
 
-use Closure;
 use App\Models\Repository;
+use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 
 class UniqueRepositoryNameRule implements ValidationRule

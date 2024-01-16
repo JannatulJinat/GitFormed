@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\RegistrationFormRequest;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
@@ -17,7 +16,7 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
-    public function store(RegistrationFormRequest $request):RedirectResponse
+    public function store(RegistrationFormRequest $request): RedirectResponse
     {
         $request->validated();
         User::create([

@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PullRequestController;
 use App\Http\Controllers\RepositoryController;
+use App\Models\Repository;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,10 @@ Route::get('/profile', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/create-repository', [RepositoryController::class, 'create'])->name('create-repository');
     Route::post('/create-repository', [RepositoryController::class, 'store']);
+
+    Route::get('/{user_name}/{repository_title}/create-pull-request', [PullRequestController::class, 'create'])->name('create-pull-request');
+    Route::post('/{user_name}/{repository_title}/create-pull-request', [PullRequestController::class, 'store'])->name('store-pull-request');
 });
+Route::get('/{user_name}/{repository_title}', [RepositoryController::class, 'show'])->name('single-repository');
 
 require __DIR__ . '/auth.php';
