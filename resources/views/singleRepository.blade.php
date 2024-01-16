@@ -5,7 +5,7 @@
             <p class="text-lg p-5">Repository Title: {{ $repository_title }}</p>
             <p class="text-lg p-5">Owner of this repository: {{ $owner_name }}</p>
             @if (Auth::user()->user_name === $owner_name)
-                <a href="/create-pull-request"><button
+                <a href="{{ url(auth()->user()->user_name . '/' . $repository_title . '/create-pull-request') }}"><button
                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-10">Create a Pull
                         Request</button></a>
             @endif
@@ -31,5 +31,4 @@
 
         </div>
     </div>
-
 @endsection

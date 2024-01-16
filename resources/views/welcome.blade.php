@@ -7,7 +7,8 @@
             </div>
             <div class="mt-10">
                 @auth
-                    <a href= "{{ route('profile') }}" class="bg-gray-200 rounded-md hover:bg-green-500 px-5 py-3">Go to Profile</a>
+                    <a href= "{{ route('profile') }}" class="bg-gray-200 rounded-md hover:bg-green-500 px-5 py-3">Go to
+                        Profile</a>
                 @else
                     <a href="{{ route('register') }}"
                         class="bg-gray-200 rounded-md hover:bg-green-500 px-5 py-3 mr-5">Register</a>
@@ -47,7 +48,10 @@
             <tbody>
                 @forelse ($repositories as $repository)
                     <tr>
-                        <td class="border border-slate-400 px-2 py-2">{{ $repository->repository_name }}</td>
+                        <td class="border border-slate-400 px-2 py-2">
+                            <a href="{{ url(auth()->user()->user_name . '/' . $repository->repository_name) }}"  class="bg-blue-300 rounded-md hover:bg-blue-500 px-5 py-3 mr-5">
+                                {{ $repository->repository_name }}</a>
+                        </td>
                         <td class="border border-slate-400 px-2 py-2">{{ $repository->user_id }}</td>
                         <td class="border border-slate-400 px-2 py-2">{{ $repository->watchers_count }}</td>
                         <td class="border border-slate-400 px-2 py-2">{{ $repository->created_at }}</td>

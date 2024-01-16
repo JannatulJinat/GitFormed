@@ -18,7 +18,9 @@
             <tbody>
                 @forelse ($repositories as $repository)
                     <tr>
-                        <td class="border border-slate-400 px-2 py-2">{{ $repository->repository_name }}</td>
+                        <td class="border border-slate-400 px-2 py-2">
+                            <a href="{{url(auth()->user()->user_name. '/'.$repository->repository_name)}}"  class="bg-blue-300 rounded-md hover:bg-blue-500 px-5 py-3 mr-5">{{ $repository->repository_name }}</a>
+                        </td>
                     </tr>
                 @empty
                     <tr>
