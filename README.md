@@ -24,4 +24,4 @@ So, unless you take the appropriate security precautions, DO NOT RUN THIS ON YOU
 Your feedback is highly appreciated!
 
 ## Preview
-[Visit this link to watch the preview](https://drive.google.com/drive/folders/18lB7CUtwAFAI_rB6XEqoNUn2tgp3H8rQ?usp=drive_link)
+[Visit this link to watch the preview](https://drive.google.com/file/d/1LcMt0mzOV7FtAS1Vvm6_J7QHQ3DCJ1L_/view?usp=drive_link)
