@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\PullRequestController;
-use App\Http\Controllers\RepositoryController;
-use App\Http\Controllers\WatcherController;
+use App\Models\Watcher;
 use App\Models\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WatcherController;
+use App\Http\Controllers\RepositoryController;
+use App\Http\Controllers\PullRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,9 @@ Route::get('/', function (Request $request) {
 
 Route::get('/profile', function () {
     $repositories = Repository::where('user_id', auth()->id())->get();
-    return view('profile', compact('repositories'));
+    $watchedrepositoryIds = Watcher::where('user_id', auth()->id())->pluck('repository_id');
+    $watchedrepositories = Repository::whereIn('id', $watchedrepositoryIds)->get();
+    return view('profile', compact(['repositories', 'watchedrepositories']));
 })->name('profile')->middleware('auth');
 
 Route::middleware('auth')->group(function () {

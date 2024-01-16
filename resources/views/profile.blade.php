@@ -27,6 +27,24 @@
                 @endforelse
             </tbody>
         </table>
+        <table class="border-separate border border-slate-400 w-full text-center">
+            <thead class="text-center">
+                <tr class="bg-gray-500 text-white">
+                    <th class="py-2 px-3">List of repositories I am watching.</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($watchedrepositories as $watchedrepository)
+                    <tr>
+                        <td class="border border-slate-400 px-2 py-2">{{ $watchedrepository->repository_name }}</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td class="border border-slate-400">------------------No records------------------</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
     </div>
 @endsection
