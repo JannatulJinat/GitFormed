@@ -1,12 +1,12 @@
 <?php
 
-use App\Models\Watcher;
+use App\Http\Controllers\PullRequestController;
+use App\Http\Controllers\RepositoryController;
+use App\Http\Controllers\WatcherController;
 use App\Models\Repository;
+use App\Models\Watcher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WatcherController;
-use App\Http\Controllers\RepositoryController;
-use App\Http\Controllers\PullRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ Route::get('/', function (Request $request) {
         default:
             $repositories = Repository::all();
     }
-    return view('welcome', compact('repositories',));
+    return view('welcome', compact('repositories'));
 })->name('home');
 
 Route::get('/profile', function () {
@@ -56,4 +56,4 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/{user_name}/{repository_title}', [RepositoryController::class, 'show'])->name('single-repository');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
