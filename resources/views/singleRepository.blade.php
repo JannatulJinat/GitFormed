@@ -5,10 +5,31 @@
             <p class="text-lg p-5">Repository Title: {{ $repository_title }}</p>
             <p class="text-lg p-5">Owner of this repository: {{ $owner_name }}</p>
             @if (Auth::user()->user_name === $owner_name)
-            <a href="/create-pull-request"><button
-                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Create a Pull
-                Request</button></a>
-            </div>
+                <a href="/create-pull-request"><button
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-10">Create a Pull
+                        Request</button></a>
             @endif
+            <table class="border-separate border border-slate-400 mb-10">
+                <thead class="text-center">
+                    <tr class="bg-gray-500 text-white">
+                        <th class="py-2 px-3">Pull Request Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($pull_requests as $item)
+                        <tr>
+                            <td class="border border-slate-400 px-2 py-2">{{ $item->pull_request_title }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td class="border border-slate-400">------------------No records------------------</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+
+
+        </div>
     </div>
+
 @endsection
