@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\PullRequestController;
-use App\Http\Controllers\RepositoryController;
 use App\Models\Repository;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RepositoryController;
+use App\Http\Controllers\PullRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (Request $request) {
+    $sortOption = $request->input('sort', 'default');
+    switch($sortOption){
+        default:
+            $repositories = Repository::all();
+    }
+    return view('welcome', compact('repositories'));
 })->name('home');
 
 Route::get('/profile', function () {
