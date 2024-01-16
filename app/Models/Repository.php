@@ -25,4 +25,9 @@ class Repository extends Model
     {
         return $this->hasMany(PullRequest::class);
     }
+
+    public function watchers(): HasMany
+    {
+        return $this->hasMany(Watcher::class, 'repository_id');
+    }
 }

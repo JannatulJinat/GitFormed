@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PullRequestController;
 use App\Http\Controllers\RepositoryController;
+use App\Http\Controllers\WatcherController;
 use App\Models\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/{user_name}/{repository_title}/create-pull-request', [PullRequestController::class, 'create'])->name('create-pull-request');
     Route::post('/{user_name}/{repository_title}/create-pull-request', [PullRequestController::class, 'store'])->name('store-pull-request');
+
+    Route::get('/store-watcher', [WatcherController::class, 'store'])->name('store-watcher');
 });
 Route::get('/{user_name}/{repository_title}', [RepositoryController::class, 'show'])->name('single-repository');
 

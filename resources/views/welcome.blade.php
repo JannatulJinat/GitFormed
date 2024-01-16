@@ -28,6 +28,14 @@
                 @forelse ($repositories as $repository)
                     <tr>
                         <td class="border border-slate-400 px-2 py-2">{{ $repository->repository_name }}</td>
+                        @auth
+                            <td class="border border-slate-400 px-5 py-5">
+                                <a href="{{ route('store-watcher', ['repository_id' => $repository->id]) }}"  class="bg-gray-200 rounded-md hover:bg-green-500 px-5 py-3 mr-5">
+                                    Add me as
+                                    watcher</a>
+                            </td>
+                        @endauth
+
                     </tr>
                 @empty
                     <tr>

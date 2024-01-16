@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Repository::class);
     }
+
+    public function watchedRepositories(): HasMany
+    {
+        return $this->hasMany(Watcher::class, 'user_id');
+    }
 }
