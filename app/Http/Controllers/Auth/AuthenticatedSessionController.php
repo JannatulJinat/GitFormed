@@ -23,7 +23,7 @@ class AuthenticatedSessionController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/profile');
+            return redirect('/');
         }
 
         return back()->withErrors([
