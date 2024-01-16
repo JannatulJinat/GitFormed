@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('repository_id');
             $table->string('pull_request_title');
             $table->timestamps();
-            $table->foreign('repository_id')->references('id')->on('repository');
+            $table->foreign('repository_id')->references('id')->on('repositories');
         });
     }
 

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('repository_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
-            $table->foreign('repository_id')->references('id')->on('repository');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('repository_id')->references('id')->on('repositories');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
