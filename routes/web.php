@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\PullRequestController;
+use App\Http\Controllers\RepositoryController;
 use App\Models\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RepositoryController;
-use App\Http\Controllers\PullRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +19,17 @@ use App\Http\Controllers\PullRequestController;
 
 Route::get('/', function (Request $request) {
     $sortOption = $request->input('sort', 'default');
-    switch($sortOption){
+    switch ($sortOption) {
         default:
             $repositories = Repository::all();
     }
+
     return view('welcome', compact('repositories'));
 })->name('home');
 
 Route::get('/profile', function () {
-    return view('profile');
+    $repositories = Repository::where('user_id', auth()->id())->get();
+    return view('profile', compact('repositories'));
 })->name('profile')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
