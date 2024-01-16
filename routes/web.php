@@ -22,11 +22,20 @@ use App\Http\Controllers\PullRequestController;
 Route::get('/', function (Request $request) {
     $sortOption = $request->input('sort', 'default');
     switch ($sortOption) {
+        case 'alphabetical':
+            $repositories = Repository::orderBy('repository_name')->get();
+            break;
+        case 'latest':
+            $repositories = Repository::orderBy('created_at')->get();
+            break;
+        case 'watchers':
+            $repositories = Repository::withCount('watchers')
+                ->orderBy('watchers_count', 'desc')->get();
+            break;
         default:
             $repositories = Repository::all();
     }
-
-    return view('welcome', compact('repositories'));
+    return view('welcome', compact('repositories',));
 })->name('home');
 
 Route::get('/profile', function () {
